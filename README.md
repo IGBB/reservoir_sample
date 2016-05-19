@@ -1,5 +1,6 @@
 # reservoir_sample
 Quickly sample fast[qa] files using the reservoir sample algorithm
+<<<<<<< HEAD
 
 ## Compile
 gcc -lz -o reservoir_sample -Ireadfq reservoir_sample.c
@@ -21,3 +22,5 @@ for any corresponding short options.
 
 Report bugs to <maa146@igbb.msstate.edu>.
 
+=======
+>>>>>>> origin

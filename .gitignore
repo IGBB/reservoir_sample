@@ -30,5 +30,8 @@
 
 # Debug files
 *.dSYM/
+<<<<<<< HEAD
 *~
 reservoir_sample
+=======
+>>>>>>> origin
