@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <limits.h>
 #include <argp.h>
+#include <time.h>
 
 #include "kseq.h" 
 
@@ -80,6 +81,8 @@ int main (int argc, char** argv){
   reservoir = calloc(args.size, sizeof(char*));
 
   count = 0;
+
+  srand ( time(NULL) );
   
   for( i = 0; i < args.file_count; i++){
     fprintf(stderr, "   files[%d]:      %s\n", i, args.files[i]);
@@ -88,11 +91,15 @@ int main (int argc, char** argv){
     seq = kseq_init(fp);
 
     while (kseq_read(seq) >= 0) {
+      index = count;
       count++;
-      index = RAND() % count;
+      
+      if(index > args.size)
+        index = RAND() % count;
+
       if(index < args.size){
         reservoir[index] = realloc(reservoir[index], seq->seq.l+1);
-        memcpy(reservoir[index], seq->seq.s, seq->seq.l);\
+        memcpy(reservoir[index], seq->seq.s, seq->seq.l);
         reservoir[index][args.crop] = 0;
       }
     }
