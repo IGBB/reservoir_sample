@@ -91,6 +91,12 @@ int main (int argc, char** argv){
     seq = kseq_init(fp);
 
     while (kseq_read(seq) >= 0) {
+
+      /* Skip sequence if shorter than crop */
+      if(seq->seq.l < args.crop)
+        continue;
+
+
       index = count;
       count++;
       
