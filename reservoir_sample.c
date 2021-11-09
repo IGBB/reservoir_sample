@@ -114,6 +114,11 @@ int main (int argc, char** argv){
     gzclose(fp);
   }
 
+  if(count < args.size){
+    fprintf(stderr, "Reservoir size is larger fast[aq] file.");
+    return -1;
+  }
+  
   for( i = 0; i < args.size; i++)
     printf(">%s_%d\n%s\n", args.name, i, reservoir[i]);
     
